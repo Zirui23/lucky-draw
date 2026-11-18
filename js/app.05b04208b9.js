@@ -2,7 +2,7 @@ window.LD_CONFIG={supabaseUrl:"https://pwrblirlcatedwdbjpwj.supabase.co",supabas
         <div class="dialog-card ${s.danger?"danger":""}" role="alertdialog" aria-modal="true" aria-labelledby="dlgTitle">
           <h3 id="dlgTitle">${n(s.title)}</h3>
           <div class="dialog-body">${s.html||""}</div>
-          ${s.requireText?`<label class="dialog-require">Type <b>${n(s.requireText)}</b> to confirm<input id="dlgInput" autocomplete="off" spellcheck="false"></label>`:""}
+          ${s.requireText?`<label class="dialog-require"><span>Type <b>${n(s.requireText)}</b> to confirm</span><input id="dlgInput" autocomplete="off" spellcheck="false"></label>`:""}
           <div class="dialog-actions">
             <button class="btn ghost" data-r="0">${n(s.cancelText||"Cancel")}</button>
             <button class="btn ${s.danger?"danger":"primary"}" data-r="1" ${s.requireText?"disabled":""}>${n(s.confirmText||"Confirm")}</button>
