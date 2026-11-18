@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex">
   <title>Lucky Draw</title>
-  <link rel="stylesheet" href="css/app.bdb84ad168.css">
+  <link rel="stylesheet" href="css/app.e556dd72c1.css">
 </head>
 <body>
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -36,9 +36,10 @@
         </div>
       </div>
       <button class="spin-btn" id="spinBtn" type="button">
+        <svg class="hold-ring" aria-hidden="true"><rect pathLength="100"></rect></svg>
         <span class="spin-text" id="spinText">Spin</span>
       </button>
-      <div class="spin-hint" id="spinHint">Press <kbd>Space</kbd> to spin</div>
+      <div class="spin-hint" id="spinHint">Hold <kbd>Space</kbd> or the button to spin</div>
     </section>
     <footer class="stage-foot">
       <div class="prog">
@@ -65,7 +66,6 @@
     </button>
     <div class="staff-menu" id="staffMenu">
       <div class="staff-info" id="staffInfo"></div>
-      <button type="button" data-act="console">Admin console <kbd>Ctrl+Shift+A</kbd></button>
       <button type="button" data-act="logout">Sign out this device</button>
     </div>
   </div>
@@ -80,32 +80,20 @@
   </aside>
   <div class="winner-overlay" id="winnerOverlay"></div>
   <canvas class="confetti" id="confetti" aria-hidden="true"></canvas>
-  <div class="admin-trigger" id="adminTrigger" aria-hidden="true"></div>
   <aside class="admin-drawer" id="adminDrawer" aria-hidden="true"></aside>
   <div class="login-screen" id="loginScreen">
     <form class="login-card" id="loginForm">
       <div class="eyebrow">Staff Access</div>
       <div class="login-title">Lucky Draw</div>
-      <div class="seg" role="radiogroup" aria-label="Role">
-        <label><input type="radio" name="role" value="operator" checked><span>Operator</span></label>
-        <label><input type="radio" name="role" value="admin"><span>Admin</span></label>
-      </div>
+      <label class="fld">Username<input id="loginUser" autocomplete="username" autocapitalize="off" spellcheck="false" maxlength="40" required></label>
       <label class="fld">Password<input id="loginPw" type="password" autocomplete="current-password" required></label>
       <label class="fld">This device's name<input id="loginDevice" placeholder="e.g. Projector Laptop, Backup iPad" maxlength="60" autocomplete="off"></label>
       <div class="login-err" id="loginErr" aria-live="polite"></div>
       <button class="btn primary big" type="submit">Sign in</button>
-      <p class="login-note"><b>Operator</b> runs the draw. <b>Admin</b> also manages the event settings.</p>
     </form>
-  </div>
-  <div class="lock-screen" id="lockScreen">
-    <div class="lock-card">
-      <div class="lock-title">Admin Console</div>
-      <p>Keep this window on your laptop screen. Every device stays in sync automatically.</p>
-      <button class="btn primary" type="button">Unlock</button>
-    </div>
   </div>
   <div class="dialog" id="dialog"></div>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <script src="js/app.e6fd1b1e15.js"></script>
+  <script src="js/app.a3319c5d9d.js"></script>
 </body>
 </html>
