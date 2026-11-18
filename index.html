@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Lucky Draw</title>
+  <link rel="stylesheet" href="css/app.a0fc9a2165.css">
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <filter id="vblur-lo"><feGaussianBlur stdDeviation="0 3"/></filter>
+    <filter id="vblur-hi"><feGaussianBlur stdDeviation="0 9"/></filter>
+  </svg>
+  <div class="bg" aria-hidden="true">
+    <div class="bg-rays"></div>
+    <div class="bg-spot left"></div>
+    <div class="bg-spot right"></div>
+    <div class="bg-sparkles"></div>
+  </div>
+  <main id="stage" class="stage">
+    <header class="stage-head">
+      <div class="eyebrow" id="eventSubtitle">Grand Lucky Draw</div>
+      <h1 class="event-title" id="eventTitle">Annual Gala Night</h1>
+    </header>
+    <section class="machine" aria-live="polite">
+      <div class="draw-label">
+        <span class="draw-no" id="drawNo">Draw #1</span>
+        <span class="draw-prize" id="drawPrize"></span>
+      </div>
+      <div class="machine-frame" id="machineFrame">
+        <div class="machine-inner">
+          <div class="reels" id="reels"></div>
+          <div class="payline" aria-hidden="true"></div>
+        </div>
+      </div>
+      <button class="spin-btn" id="spinBtn" type="button">
+        <span class="spin-text" id="spinText">Spin</span>
+      </button>
+      <div class="spin-hint" id="spinHint">Press <kbd>Space</kbd> to spin</div>
+    </section>
+    <footer class="stage-foot">
+      <div class="prog">
+        <div class="prog-meta"><span id="progText"></span><span id="poolText"></span></div>
+        <div class="prog-track"><div class="prog-bar" id="progBar"></div></div>
+      </div>
+    </footer>
+  </main>
+  <div class="corner-controls">
+    <span class="conn-dot on" id="connDot" title="Online"></span>
+    <button class="cc-btn" id="boardBtn" type="button" aria-label="Winners board (W)" title="Winners board (W)">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v3a5 5 0 0 1-10 0V4Z"/><path d="M7 5H4v1a3 3 0 0 0 3 3M17 5h3v1a3 3 0 0 1-3 3M12 12v4M8 20h8M9 16h6v4H9z"/></svg>
+      <span class="cc-count" id="boardCount">0</span>
+    </button>
+    <button class="cc-btn" id="muteBtn" type="button" aria-label="Mute" title="Mute (M)">
+      <svg class="ico-on" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/></svg>
+      <svg class="ico-off" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="m17 9 5 6M22 9l-5 6"/></svg>
+    </button>
+    <button class="cc-btn" id="fsBtn" type="button" aria-label="Full screen (F)" title="Full screen (F)">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5"/></svg>
+    </button>
+    <button class="cc-btn" id="staffBtn" type="button" aria-label="Staff menu" title="Staff menu">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
+    </button>
+    <div class="staff-menu" id="staffMenu">
+      <div class="staff-info" id="staffInfo"></div>
+      <button type="button" data-act="console">Admin console <kbd>Ctrl+Shift+A</kbd></button>
+      <button type="button" data-act="logout">Sign out this device</button>
+    </div>
+  </div>
+  <aside class="board" id="board" aria-hidden="true" aria-label="Winners board">
+    <div class="board-head">
+      <h2>Winners</h2>
+      <button class="cc-btn" id="boardClose" type="button" aria-label="Close winners board">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+      </button>
+    </div>
+    <ol class="board-list" id="boardList"></ol>
+  </aside>
+  <div class="winner-overlay" id="winnerOverlay"></div>
+  <canvas class="confetti" id="confetti" aria-hidden="true"></canvas>
+  <div class="admin-trigger" id="adminTrigger" aria-hidden="true"></div>
+  <aside class="admin-drawer" id="adminDrawer" aria-hidden="true"></aside>
+  <div class="login-screen" id="loginScreen">
+    <form class="login-card" id="loginForm">
+      <div class="eyebrow">Staff Access</div>
+      <div class="login-title">Lucky Draw</div>
+      <div class="seg" role="radiogroup" aria-label="Role">
+        <label><input type="radio" name="role" value="operator" checked><span>Operator</span></label>
+        <label><input type="radio" name="role" value="admin"><span>Admin</span></label>
+      </div>
+      <label class="fld">Password<input id="loginPw" type="password" autocomplete="current-password" required></label>
+      <label class="fld">This device's name<input id="loginDevice" placeholder="e.g. Projector Laptop, Backup iPad" maxlength="60" autocomplete="off"></label>
+      <div class="login-err" id="loginErr" aria-live="polite"></div>
+      <button class="btn primary big" type="submit">Sign in</button>
+      <p class="login-note"><b>Operator</b> runs the draw. <b>Admin</b> also manages the event settings.</p>
+    </form>
+  </div>
+  <div class="lock-screen" id="lockScreen">
+    <div class="lock-card">
+      <div class="lock-title">Admin Console</div>
+      <p>Keep this window on your laptop screen. Every device stays in sync automatically.</p>
+      <button class="btn primary" type="button">Unlock</button>
+    </div>
+  </div>
+  <div class="dialog" id="dialog"></div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="js/app.5960ed66a3.js"></script>
+</body>
+</html>
